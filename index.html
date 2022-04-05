@@ -1,0 +1,964 @@
+<html>
+  <head>
+    <title>Schnigg-Snake</title>
+  </head>
+  <body>
+    <style>
+      body {
+        text-align: center;
+        background-color: rgb(85, 85, 85);
+        position: fixed; 
+        overflow-y: scroll;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      #hoved{
+        width: 60%;
+        border: rgb(100, 100, 100) 1px solid;
+        margin: auto;
+        margin-top: 5px;
+        display: inline-block;
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        box-shadow: 5px 5px 20px;
+        height: 630px;
+      }
+      canvas {
+        border: solid black 1px;
+        margin: auto;
+        box-sizing: 5px 5px 20px;
+        box-shadow: 5px 5px 20px;
+        position: relative;
+        top: -501;
+      }
+
+      button {
+        margin: 5px;
+        box-shadow: 5px 5px 30px;
+        position: relative;
+        top: -501;
+      }
+
+      h1 {
+        text-shadow: 5px 5px 5px rgb(104, 104, 104);
+        margin-top: 5px;
+      }
+
+      h2 {
+        text-shadow: 5px 5px 5px rgb(104, 104, 104);
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+
+      table {
+        margin: auto;
+        width: 500px;
+        height: 500px;
+        border-collapse: collapse;
+      }
+      tr:nth-of-type(odd) td:nth-of-type(odd),
+      tr:nth-of-type(even) td:nth-of-type(even) {
+        background-color: rgb(95, 255, 95);
+      }
+      tr:nth-of-type(even) td:nth-of-type(odd),
+      tr:nth-of-type(odd) td:nth-of-type(even) {
+        background-color: rgb(80, 226, 80);
+      }
+    </style>
+    <div id="hoved">
+      <div>
+        <h2>High Score: 0</h2>
+      </div>
+      <div>
+        <h1>Score: 0</h1>
+      </div>
+      <img src="SigurdMoment.png" id="bilde" style="display: none;">
+      <img src="PP-2.png" id="mat" style="display: none;">
+      <table>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      <canvas id="brett" height="500" width="500"></canvas>
+      <div>
+        <button>↻</button>
+      </div>
+    </div>
+
+    
+
+    <script>
+      let size = 20;
+
+      let audio = new Audio("sniggurd sound.wav");
+
+      let snake = [
+        {
+        x: 240,
+        y: 240
+        },
+        {
+        x: 240 + size,
+        y: 240
+        },
+        {
+        x: 240 + size * 2,
+        y: 240
+        },
+        {
+        x: 240 + size * 3,
+        y: 240
+        }
+      ];   
+      
+      const canvas = document.getElementById("brett");
+      const ctx = canvas.getContext("2d");
+      const img = document.getElementById("bilde");
+      const mat = document.getElementById("mat");
+
+      ctx.shadowOffsetX = 10;
+      ctx.shadowOffsetY = 10;
+      ctx.shadowBlur = 30;
+      ctx.shadowColor = "grey";
+
+      let scoreEl = document.querySelector("h1");
+      let score = 0;
+      let highScore = 0;
+      let highScoreEl = document.querySelector("h2");
+
+
+      let dx = 0;
+      let dy = 0;
+
+      window.onload = function() {
+        main();       
+        gen_food();       
+      };
+
+
+      function snakePart(snakePart){
+        ctx.drawImage(img, snakePart.x, snakePart.y, size, size);
+      }
+
+      function draw_snake(){
+        snake.forEach(snakePart);
+      }
+
+      function move_snake(){
+        const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+        snake.unshift(head);
+        const has_eaten_food = snake[0].x === food_x && snake[0].y === food_y;
+        if (has_eaten_food) {
+          // Generate new food location
+          gen_food();
+          score++
+          scoreEl.innerText = "Score: " + score;
+          audio.play();
+        } 
+        else {
+          // Remove the last part of snake body
+          snake.pop();
+        }
+      }
+
+      document.addEventListener("keydown", change_direction)
+
+      function change_direction(event) 
+      {  
+        const LEFT_KEY = 37;
+        const RIGHT_KEY = 39;
+        const UP_KEY = 38;
+        const DOWN_KEY = 40;
+ 
+        const keyPressed = event.keyCode;
+        const goingUp = dy === -size;
+        const goingDown = dy === size;
+        const goingRight = dx === size;  
+        const goingLeft = dx === -size;
+ 
+        if (keyPressed === LEFT_KEY && !goingRight){    
+          dx = -size;
+          dy = 0;  
+        }
+ 
+        if (keyPressed === UP_KEY && !goingDown){    
+          dx = 0;
+          dy = -size;
+        }
+ 
+        if (keyPressed === RIGHT_KEY && !goingLeft){    
+          dx = size;
+          dy = 0;
+        }
+ 
+        if (keyPressed === DOWN_KEY && !goingUp){    
+          dx = 0;
+          dy = size;
+        }
+      }
+
+      function has_game_ended(){  
+        for (let i = 4; i < snake.length; i++){    
+          const has_collided = snake[i].x === snake[0].x && snake[i].y === snake[0].y
+          if (has_collided){
+            if(score > highScore){
+              highScore = score;
+              highScoreEl.innerText = "High Score: " + highScore;
+            }
+            return true
+          } 
+        }
+        const hitLeftWall = snake[0].x < 0;  
+        const hitRightWall = snake[0].x > canvas.width - size;
+        const hitToptWall = snake[0].y < 0;
+        const hitBottomWall = snake[0].y > canvas.height - size;
+ 
+        return hitLeftWall ||  hitRightWall || hitToptWall || hitBottomWall
+      }
+
+      function random_food(min, max){  
+        return Math.round((Math.random() * (max-min) + min) / size) * size;
+      }
+ 
+      function gen_food(){  
+        food_x = random_food(0, canvas.width - size);
+        food_y = random_food(0, canvas.height - size);
+        snake.forEach(function has_snake_eaten_food(part){
+          const has_eaten = part.x == food_x && part.y == food_y;
+          if (has_eaten) gen_food();
+        });
+      }
+
+      function drawFood(){
+        ctx.drawImage(mat, food_x, food_y, size, size);
+      }
+
+      function main(){
+
+        if (has_game_ended()){
+          return;
+        }
+
+        setTimeout(function onTick(){
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawFood();
+          move_snake();
+          draw_snake();
+          if(score > highScore){
+              highScore = score;
+              highScoreEl.innerText = "High Score: " + highScore;
+          }
+          main();
+        }, 100);
+      }
+
+      function reset(){
+        snake = [
+        {
+        x: 240,
+        y: 240
+        },
+        {
+        x: 240 + size,
+        y: 240
+        },
+        {
+        x: 240 + size * 2,
+        y: 240
+        },
+        {
+        x: 240 + size * 3,
+        y: 240
+        }
+        ];   
+
+        score = 0;
+        scoreEl.innerText = "Score: " + score;
+        dx = 0;
+        dy = 0;
+        main();
+      }
+
+      let buttonEl = document.querySelector("button");
+      buttonEl.addEventListener("click", reset);
+      document.addEventListener("keypress", function (e){
+        if (e.key == "r"){
+          reset();
+        }
+      })
+    </script>
+  </body>
+</html>
