@@ -15,6 +15,7 @@
 
       #hoved{
         width: 60%;
+        height: max-content;
         border: rgb(100, 100, 100) 1px solid;
         margin: auto;
         margin-top: 5px;
@@ -73,6 +74,13 @@
       tr:nth-of-type(odd) td:nth-of-type(even) {
         background-color: rgb(80, 226, 80);
       }
+      
+      @media only screen and (max-width: 850px) {
+        #hoved {
+          width: 100%;
+        }
+      }
+      
     </style>
     <div id="hoved">
       <div>
