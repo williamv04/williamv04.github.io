@@ -21,7 +21,7 @@ let snake = [
   }
 ];   
 
-const eatingSound = new Audio("Sniggurd sound.wav");
+const eatingSound = new Audio("sniggurd sound.wav");
 const deathSound = new Audio("4tniteDeath.mp3");
 
 const canvas = document.getElementById("brett");
