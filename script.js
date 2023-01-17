@@ -30,7 +30,7 @@ sadList = []
 
 for (i in boxList){
     boxList[i].addEventListener("click", function(e){
-        document.getElementById(e.target.id).style.backgroundImage = "url(" + (boxImgList[(e.target.id) - 1].src.substring(67).replace("%20", " ")) + ")"
+        document.getElementById(e.target.id).style.backgroundImage = "url(" + (boxImgList[(e.target.id) - 1].src.substring(0).replace("%20", " ")) + ")"
 
         if (a){
             for (i in sadList){
