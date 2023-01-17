@@ -1,0 +1,27 @@
+#main {
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    background-color: blueviolet;
+    display: grid;
+    grid-template: "b b b b"
+                   "b b b b"
+                   "b b b b"
+                   "b b b b";
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 0%;
+}
+
+#main>div {
+    background-color: aquamarine;  
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 130px;
+    height: 130px;
+    grid-area: "b";
+    margin: auto;
+}
