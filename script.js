@@ -107,4 +107,3 @@ for (i in boxList){
     imgList.splice(x, 1)
 }
 
-console.log(boxImgList)
