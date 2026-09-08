@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William Venæs | CV & Portefølje</title>
+    <!-- FontAwesome for Ikoner -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- CSS STYLES & TEMATIKK --- */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #10b981; /* Cyber green */
+            --accent-hover: #059669;
+            --border-color: #334155;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-code: 'Fira Code', 'Courier New', Courier, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER / HERO */
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .profile-img-placeholder {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            border: 3px solid var(--accent-color);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            overflow: hidden;
+        }
+
+        .profile-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .bio {
+            max-width: 650px;
+            margin: 0 auto 25px;
+            color: var(--text-muted);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: #000;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--card-bg);
+        }
+
+        /* SEKSJONSTITLER */
+        section {
+            margin-top: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--accent-color);
+        }
+
+        /* TERMINAL DEMO */
+        .terminal-window {
+            background-color: #090d16;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            font-family: var(--font-code);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background-color: #1e293b;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background-color: #ff5f56; }
+        .dot-yellow { background-color: #ffbd2e; }
+        .dot-green { background-color: #27c93f; }
+
+        .terminal-title {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        .terminal-body {
+            padding: 20px;
+            min-height: 220px;
+            max-height: 400px;
+            overflow-y: auto;
+            color: #33ff57;
+        }
+
+        .terminal-output {
+            white-space: pre-wrap;
+            margin-bottom: 10px;
+            color: #cbd5e1;
+        }
+
+        .terminal-input-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prompt {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .terminal-input {
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-family: var(--font-code);
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+        }
+
+        /* TIDSLINJE (WORK & EDUCATION) */
+        .timeline-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: -41px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            border: 2px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--accent-color);
+        }
+
+        .timeline-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .timeline-tag {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .tag-edu { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .tag-work { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+
+        .timeline-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-body {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .timeline-body ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        /* SKILLS MATRIX */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* KONTAKTSEKSJON */
+        .contact-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            padding: 15px;
+            background: #0f172a;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .timeline-header { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HEADER / HERO -->
+        <header>
+            <!-- Bildeplassholder -->
+            <div class="profile-img-placeholder">
+                <!-- Erstatt src med eget bilde (f.eks. "profil.jpg") -->
+                 <img src="LoopGlitch.gif"> 
+                <!-- class="fa-solid fa-user-astronaut fa-3x" -->
+            </div> 
+            <h1>William Venæs</h1>
+            <div class="subtitle">Informatikkstudent @ UiO | Cybersecurity-entusiast</div>
+            <p class="bio">
+                Informatikkstudent med bakgrunn fra Cyberingeniørskolen. Brennende opptatt av programmering, nettverk, og IT-sikkerhet.
+            </p>
+            <div class="hero-buttons">
+                <!-- Pass på at CV-filen ligger i samme mappe og heter CV_William_Venaes.pdf -->
+                <a href="CV_William_Venaes.pdf" download class="btn">
+                    <i class="fa-solid fa-file-arrow-down"></i> Last ned CV (PDF)
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fa-solid fa-envelope"></i> Kontakt Meg
+                </a>
+            </div>
+        </header>
+
+        <!-- TERMINAL DEMO SEKSJON -->
+        <section>
+            <h2 class="section-title"><i class="fa-solid fa-terminal"></i> Interaktiv Kodedemo</h2>
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                    <span class="terminal-title">william@dev-box:~ (bash)</span>
+                </div>
+                <div class="terminal-body" id="terminalBody">
+                    <div class="terminal-output">Velkommen! Skriv <span style="color:var(--accent-color);">help</span> for å se tilgjengelige kommandoer. Trykk f.eks. på knappen under eller skriv <span style="color:var(--accent-color);">mario 5</span>.</div>
+                    <div class="terminal-input-line">
+                        <span class="prompt">william@dev-box:~$</span>
+                        <input type="text" id="terminalInput" class="terminal-input" autofocus autocomplete="off">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISUELL TIDSLINJE (UTDANNING OG ARBEID) -->
+        <section>
+            <h2 class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> Erfaring & Utdanning</h2>
+            
+            <div class="timeline-filter">
+                <button class="filter-btn active" onclick="filterTimeline('all')">Alle</button>
+                <button class="filter-btn" onclick="filterTimeline('edu')">Utdanning</button>
+                <button class="filter-btn" onclick="filterTimeline('work')">Arbeid</button>
+            </div>
+
+            <div class="timeline">
+
+                <!-- UiO -->
+                <div class="timeline-item edu">
+                    <div class="timeline-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Bachelor i Informatikk: Programmering og Systemarkitektur</span>
+                            <span class="timeline-tag tag-edu">Utdanning</span>
+                        </div>
+                        <div class="timeline-date"><i class="fa-regular fa-calendar"></i> Aug 2026 – Jun 2029 | Universitetet i Oslo</div>
+                        <div class="timeline-body">
+                            Fokus på programvareutvikling, objektorientert programmering, algoritmer og systemarkitektur.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Europris -->
+                <div class="timeline-item work">
+                    <div class="timeline-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Butikkmedarbeider</span>
+                            <span class="timeline-tag tag-work">Arbeid</span>
+                        </div>
+                        <div class="timeline-date"><i class="fa-regular fa-calendar"></i> Mar 2026 – Aug 2026 | Europris, Lade</div>
+                        <div class="timeline-body">
+                            Håndtering av kundekontakt, lagerstyring, butikkdrift og kasseløsninger i et miljø med høyt tempo.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BestDrive -->
+                <div class="timeline-item work">
+                    <div class="timeline-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Dekkmontør</span>
+                            <span class="timeline-tag tag-work">Arbeid</span>
+                        </div>
+                        <div class="timeline-date"><i class="fa-regular fa-calendar"></i> Apr 2026 – Mai 2026 | BestDrive, Nyhavna</div>
+                        <div class="timeline-body">
+                            Dekkskifte, montering/demontering på felg, dekkreparasjon, teknisk inspeksjon og kundeservice under sesongtopp.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cyberingeniørskolen -->
+                <div class="timeline-item edu">
+                    <div class="timeline-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Telematikk (1.5 år)</span>
+                            <span class="timeline-tag tag-edu">Utdanning</span>
+                        </div>
+                        <div class="timeline-date"><i class="fa-regular fa-calendar"></i> Aug 2024 – Jan 2026 | Cyberingeniørskolen, Forsvaret</div>
+                        <div class="timeline-body">
+                            Fullført emner innen:
+                            <ul>
+                                <li>Informasjonssikkerhet & Kryptografi (NSM Kryptograd 1)</li>
+                                <li>Datakommunikasjon & Cisco nettverk</li>
+                                <li>Operativsystemer (Linux/Windows Server) & Datamaskinarkitektur</li>
+                                <li>Programmering og digitalteknikk</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Luftvernbataljonen -->
+                <div class="timeline-item work">
+                    <div class="timeline-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Førstegangstjeneste – Trensoldat</span>
+                            <span class="timeline-tag tag-work">Militært</span>
+                        </div>
+                        <div class="timeline-date"><i class="fa-regular fa-calendar"></i> Feb 2024 – Feb 2025 | Luftvernbataljonen, Ørland</div>
+                        <div class="timeline-body">
+                            Ansvarlig for logistikk og materiellhåndtering under krevende øvelser. Viste god evne til å levere under press, selvstendig handlekraft og høy presisjon.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stasjonsdrift Hepsø -->
+                <div class="timeline-item work">
+                    <div class="timeline-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Butikkmedarbeider</span>
+                            <span class="timeline-tag tag-work">Arbeid</span>
+                        </div>
+                        <div class="timeline-date"><i class="fa-regular fa-calendar"></i> Aug 2023 – Jan 2024 | Stasjonsdrift Hepsø AS</div>
+                        <div class="timeline-body">
+                            Selvstendig ansvar for stasjonsdrift, kundeservice og tidsintensive rutineoppgaver.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Videregående -->
+                <div class="timeline-item edu">
+                    <div class="timeline-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Studiespesialisering m/ Realfag</span>
+                            <span class="timeline-tag tag-edu">Utdanning</span>
+                        </div>
+                        <div class="timeline-date"><i class="fa-regular fa-calendar"></i> Aug 2020 – Jun 2023 | Thora Storm VGS</div>
+                        <div class="timeline-body">
+                            Fordypning i IT1, IT2, R1, R2, Fysikk 1 og Kjemi 1.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TEKNISK KOMPETANSE -->
+        <section>
+            <h2 class="section-title"><i class="fa-solid fa-code"></i> Teknisk Kompetanse</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-laptop-code"></i> Programmering</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML / CSS</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-network-wired"></i> System & Nettverk</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Linux / Bash</span>
+                        <span class="skill-tag">Datakommunikasjon</span>
+                        <span class="skill-tag">Cisco</span>
+                        <span class="skill-tag">Windows Server</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-user-shield"></i> Sikkerhet & Sertifikater</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Informasjonssikkerhet</span>
+                        <span class="skill-tag">Kryptograd 1 (NSM)</span>
+                        <span class="skill-tag">Førerkort Klasse B</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KONTAKTSEKSJON -->
+        <section id="contact">
+            <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Kontaktinformasjon</h2>
+            <div class="contact-card">
+                <p>Ta gjerne kontakt for en hyggelig prat eller jobbmuligheter!</p>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <h4>E-post</h4>
+                        <p id="emailText">venawillia@gmail.com</p>
+                        <button class="btn btn-secondary" style="margin-top:8px; font-size:0.8rem;" onclick="copyEmail()">Kopier e-post</button>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <h4>Telefon</h4>
+                        <p>+47 45 48 91 75</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <h4>Bosted</h4>
+                        <p>Oslo</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <h4>LinkedIn</h4>
+                        <p><a href="https://www.linkedin.com/in/william-venæs-0ba026435" target="_blank">Besøk min Profil</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERAKTIVITET -->
+    <script>
+        // 1. FILTRERING AV TIDSLINJE
+        function filterTimeline(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    if (item.classList.contains(category)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // 2. KOPIER E-POST
+        function copyEmail() {
+            const email = document.getElementById('emailText').innerText;
+            navigator.clipboard.writeText(email);
+            alert('E-postadresse kopiert til utklippstavlen!');
+        }
+
+        // 3. TERMINAL FUNKSJONALITET
+        const terminalInput = document.getElementById('terminalInput');
+        const terminalBody = document.getElementById('terminalBody');
+
+        terminalInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = this.value.trim();
+                if (command !== "") {
+                    processCommand(command);
+                }
+                this.value = '';
+            }
+        });
+
+        function printToTerminal(text, isCommand = false) {
+            const line = document.createElement('div');
+            line.className = 'terminal-output';
+            if (isCommand) {
+                line.innerHTML = `<span class="prompt">william@dev-box:~$</span> ${text}`;
+            } else {
+                line.textContent = text;
+            }
+            terminalBody.insertBefore(line, terminalInput.parentElement);
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+        }
+
+        function processCommand(cmd) {
+            printToTerminal(cmd, true);
+            const parts = cmd.split(' ');
+            const mainCmd = parts[0].toLowerCase();
+
+            switch (mainCmd) {
+                case 'help':
+                    printToTerminal("Tilgjengelige kommandoer:\n - mario [høyde] : Genererer en Super Mario pyramide (f.eks. mario 5)\n - whoami        : Viser hvem jeg er\n - skills        : Lister opp teknisk nøkkelkompetanse\n - clear         : Tømmer terminalen");
+                    break;
+                case 'whoami':
+                    printToTerminal("William Venæs - Informatikkstudent ved UiO med bakgrunn fra Cyberingeniørskolen og Forsvaret.");
+                    break;
+                case 'skills':
+                    printToTerminal("Språk: C, Python, JavaScript, HTML, CSS\nInfrastruktur: Linux, Cisco, Datakommunikasjon, Informasjonssikkerhet");
+                    break;
+                case 'clear':
+                    const outputs = document.querySelectorAll('.terminal-output');
+                    outputs.forEach(out => out.remove());
+                    break;
+                case 'mario':
+                    let height = parseInt(parts[1]);
+                    if (isNaN(height) || height < 1 || height > 15) {
+                        printToTerminal("Vennligst oppgi en gyldig høyde mellom 1 og 15. Eksempel: mario 5");
+                    } else {
+                        let pyramid = "";
+                        for (let i = 1; i <= height; i++) {
+                            let spaces = " ".repeat(height - i);
+                            let hashes = "#".repeat(i);
+                            pyramid += spaces + hashes + "  " + hashes + "\n";
+                        }
+                        printToTerminal(pyramid);
+                    }
+                    break;
+                default:
+                    printToTerminal(`Kommando ikke funnet: ${cmd}. Skriv 'help' for instruksjoner.`);
+            }
+        }
+    </script>
+</body>
+</html>
